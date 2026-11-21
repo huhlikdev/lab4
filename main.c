@@ -12,19 +12,17 @@ int ackermann(int m, int n) {
     }
 }
 
-// Ввод массива в формате [1, 2, 3]
 int input_array(int arr[], int max_size) {
     char str[1000];
     printf("Vvedite massiv v formate [1, 2, 3]:\n");
     scanf(" %[^\n]", str);
     int count = 0;
-    int i = 1; // Пропускаем первую скобку
+    int i = 1;
     if (str[0] != '[') {
         printf("Oshibka: massiv dolzhen nachinatsya s '['\n");
         return -1;
     }
     while (str[i] != '\0' && str[i] != ']') {
-        // Пропускаем пробелы и запятые
         while (str[i] == ' ' || str[i] == ',') {
             i++;
         }
@@ -35,7 +33,6 @@ int input_array(int arr[], int max_size) {
             sign = -1;
             i++;
         }
-        // Собираем число
         while (str[i] >= '0' && str[i] <= '9') {
             num = num * 10 + (str[i] - '0');
             i++;
@@ -54,11 +51,9 @@ int input_array(int arr[], int max_size) {
     return count;
 }
 
-// Вывод массива с динамической шириной поля
 void print_array(int arr[], int size, char flag) {
     if (flag == 'f') return; // Если флаг 'f', ничего не выводим
     if (size == 0) return;
-    // Ищем максимальную длину числа
     int max_len = 0;
     for (int i = 0; i < size; i++) {
         char buf[50];
@@ -71,7 +66,7 @@ void print_array(int arr[], int size, char flag) {
     int width = max_len + 1; // Ширина поля по формуле
     printf("[");
     for (int i = 0; i < size; i++) {
-        printf("%*d", width, arr[i]); // "%*d" - динамическая ширина
+        printf("%*d", width, arr[i]);
         if (i < size - 1) {
             printf(",");
         }
@@ -118,7 +113,7 @@ int main() {
         
         if (scanf("%d", &choice) != 1) {
             printf("Oshibka vvoda! Vvedite chislo.\n");
-            while (getchar() != '\n'); // Очистка буфера
+            while (getchar() != '\n');
             continue;
         }
         switch (choice) {
